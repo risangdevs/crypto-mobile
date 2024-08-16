@@ -6,6 +6,6 @@ const darkLargeTextStyle = TextStyle(color: darkTeal, fontSize: largeFontSize);
 const darkMediumTextStyle = TextStyle(color: darkTeal, fontSize: mediumFontSize);
 const darkSmallTextStyle = TextStyle(color: darkTeal, fontSize: smallFontSize);
 
-const lightLargeTextStyle = TextStyle(color: paleLavender, fontSize: largeFontSize);
-const lightMediumTextStyle = TextStyle(color: paleLavender, fontSize: mediumFontSize);
-const lightSmallTextStyle = TextStyle(color: paleLavender, fontSize: smallFontSize);
+const lightLargeTextStyle = TextStyle(color: softYellow, fontSize: largeFontSize);
+const lightMediumTextStyle = TextStyle(color: softYellow, fontSize: mediumFontSize);
+const lightSmallTextStyle = TextStyle(color: softYellow, fontSize: smallFontSize);

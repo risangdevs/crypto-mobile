@@ -16,11 +16,11 @@ final ThemeData lightTheme = ThemeData(
       bodyMedium: TextStyle(color: deepPurple),
       bodySmall: TextStyle(color: deepPurple),
     ),
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
       elevation: 6.0,
       centerTitle: true,
       color: mintGreen,
-      titleTextStyle: darkMediumTextStyle,
+      titleTextStyle: darkMediumTextStyle.copyWith(fontFamily: 'Inter'),
       shadowColor: mintGreen,
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -29,24 +29,28 @@ final ThemeData lightTheme = ThemeData(
       elevation: 6.0,
       landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
       selectedItemColor: deepPurple,
+    ),
+    switchTheme: const SwitchThemeData(
+      thumbColor: MaterialStatePropertyAll(paleLavender),
+      trackColor: MaterialStatePropertyAll(softYellow),
     ));
 
 final ThemeData darkTheme = ThemeData(
     fontFamily: "Inter",
     brightness: Brightness.dark,
     primaryColor: deepPurple,
-    scaffoldBackgroundColor: darkTeal,
+    scaffoldBackgroundColor: deepBlue,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: const TextTheme(
-      displayLarge: TextStyle(color: softPink),
-      displayMedium: TextStyle(color: softPink),
-      displaySmall: TextStyle(color: softPink),
-      bodyLarge: TextStyle(color: paleLavender),
-      bodyMedium: TextStyle(color: paleLavender),
-      bodySmall: TextStyle(color: paleLavender),
+      displayLarge: TextStyle(color: softYellow),
+      displayMedium: TextStyle(color: softYellow),
+      displaySmall: TextStyle(color: softYellow),
+      bodyLarge: TextStyle(color: softYellow),
+      bodyMedium: TextStyle(color: softYellow),
+      bodySmall: TextStyle(color: softYellow),
     ),
     appBarTheme: const AppBarTheme(
-      elevation: 6.0,
+      elevation: 0.01,
       centerTitle: true,
       color: deepOlive,
       titleTextStyle: lightMediumTextStyle,
@@ -57,5 +61,10 @@ final ThemeData darkTheme = ThemeData(
       backgroundColor: deepOlive,
       elevation: 6.0,
       landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
-      selectedItemColor: paleLavender,
+      selectedItemColor: softYellow,
+      unselectedItemColor: paleLavender,
+    ),
+    switchTheme: const SwitchThemeData(
+      thumbColor: MaterialStatePropertyAll(paleLavender),
+      trackColor: MaterialStatePropertyAll(softYellow),
     ));
