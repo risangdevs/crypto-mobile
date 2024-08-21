@@ -31,8 +31,8 @@ final ThemeData lightTheme = ThemeData(
       selectedItemColor: deepPurple,
     ),
     switchTheme: const SwitchThemeData(
-      thumbColor: MaterialStatePropertyAll(paleLavender),
-      trackColor: MaterialStatePropertyAll(softYellow),
+      thumbColor: WidgetStatePropertyAll(paleLavender),
+      trackColor: WidgetStatePropertyAll(softYellow),
     ));
 
 final ThemeData darkTheme = ThemeData(
@@ -65,6 +65,6 @@ final ThemeData darkTheme = ThemeData(
       unselectedItemColor: paleLavender,
     ),
     switchTheme: const SwitchThemeData(
-      thumbColor: MaterialStatePropertyAll(paleLavender),
-      trackColor: MaterialStatePropertyAll(softYellow),
+      thumbColor: WidgetStatePropertyAll(paleLavender),
+      trackColor: WidgetStatePropertyAll(softYellow),
     ));

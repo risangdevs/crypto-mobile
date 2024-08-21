@@ -20,10 +20,12 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
     final ThemeController themeController = Get.find();
 
     return Obx(
-      () => WillPopScope(
-        onWillPop: () async {
-          return false;
+      () => PopScope(
+        // ignore: deprecated_member_use
+        onPopInvoked: (didPop)  {
+          
         },
+        canPop: false,
         child: Scaffold(
           appBar: AppBar(
             title: Text(controller.getTitle()),
