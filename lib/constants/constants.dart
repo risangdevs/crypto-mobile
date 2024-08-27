@@ -5,6 +5,7 @@ const double kDefaultPadding = 20.0;
 const double kDefaultMargin = 10.0;
 const double largeFontSize = 40.0;
 const double mediumFontSize = 20.0;
+const double mediumSmallFontSize = 16.0;
 const double smallFontSize = 12.0;
 
 const Color kBackgroundColor = paleLavender;
@@ -19,3 +20,4 @@ const Color kDarkColor = darkTeal;
 const Color kLightColor = paleLavender;
 
 const Duration duration500ms = Duration(milliseconds: 500);
+const Duration duration1s = Duration(milliseconds: 1000);

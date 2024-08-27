@@ -37,7 +37,7 @@ Widget buildCompleted(BuildContext context) {
   return Obx(
     () => SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      physics: const BouncingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
       child: Column(
         children: List.generate(
@@ -50,9 +50,11 @@ Widget buildCompleted(BuildContext context) {
                 AssetListItem(
                     imageUrl: logoUrl(item.symbol),
                     assetId: item.id,
+                    symbol: item.symbol,
                     assetName: item.name,
                     assetValue: stringToDouble(item.priceUsd),
-                    assetPriceChange: stringToDouble(item.changePercent24Hr)),
+                    assetPriceChange: stringToDouble(item.changePercent24Hr),
+                    assetMarketCap: stringToDouble(item.marketCapUsd)),
                 const CustomSizedBox(),
               ],
             );

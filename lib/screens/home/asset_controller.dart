@@ -40,14 +40,14 @@ class AssetController extends GetxController {
           backgroundColor.value =
               Colors.green.withOpacity(0.2); // Green for increase
           // Reset background color after 1 second
-          Future.delayed(duration500ms, () {
+          Future.delayed(duration1s, () {
             backgroundColor.value = Colors.transparent;
           });
         } else if (assetPrice.value < prevPrice.value) {
           backgroundColor.value =
               Colors.red.withOpacity(0.2); // Red for decrease
           // Reset background color after 1 second
-          Future.delayed(duration500ms, () {
+          Future.delayed(duration1s, () {
             backgroundColor.value = Colors.transparent;
           });
         } else {
