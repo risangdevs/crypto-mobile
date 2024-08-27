@@ -17,3 +17,5 @@ const Color kWarningColor = softYellow;
 const Color kInfoColor = babyBlue;
 const Color kDarkColor = darkTeal;
 const Color kLightColor = paleLavender;
+
+const Duration duration500ms = Duration(milliseconds: 500);

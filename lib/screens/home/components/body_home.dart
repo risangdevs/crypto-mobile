@@ -1,4 +1,5 @@
 import 'package:crypto_mobile/constants/constants.dart';
+import 'package:crypto_mobile/customs/custom_sized_box.dart';
 import 'package:crypto_mobile/networks/network_constants.dart';
 import 'package:crypto_mobile/screens/home/components/home_asset_list_item.dart';
 import 'package:crypto_mobile/screens/home/components/shimmer_home.dart';
@@ -37,16 +38,24 @@ Widget buildCompleted(BuildContext context) {
     () => SingleChildScrollView(
       scrollDirection: Axis.vertical,
       physics: const BouncingScrollPhysics(),
+      padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
       child: Column(
         children: List.generate(
           controller.data.length,
           (index) {
             var item = controller.data[index];
-            return AssetListItem(
-                imageUrl: logoUrl(item.symbol),
-                assetName: item.name,
-                assetValue: stringToDouble(item.priceUsd),
-                assetPriceChange: stringToDouble(item.changePercent24Hr));
+            return Column(
+              children: [
+                const CustomSizedBox(),
+                AssetListItem(
+                    imageUrl: logoUrl(item.symbol),
+                    assetId: item.id,
+                    assetName: item.name,
+                    assetValue: stringToDouble(item.priceUsd),
+                    assetPriceChange: stringToDouble(item.changePercent24Hr)),
+                const CustomSizedBox(),
+              ],
+            );
           },
         ),
       ),
