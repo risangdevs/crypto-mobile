@@ -1,4 +1,5 @@
 const String host = 'https://api.coincap.io/v2/';
+const String wsHost = 'wss://ws.coincap.io/';
 // ignore: constant_identifier_names
 enum Status { LOADING, COMPLETED, ERROR }
 

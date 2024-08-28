@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:crypto_mobile/constants/constants.dart';
+import 'package:crypto_mobile/networks/network_constants.dart';
 import 'package:crypto_mobile/networks/websocket.dart';
 import 'package:crypto_mobile/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class AssetController extends GetxController {
   void onInit() {
     // Initialize WebSocket connection, subscribe only to the specific asset
     webSocketService =
-        WebSocketService('wss://ws.coincap.io/prices?assets=$assetId');
+        WebSocketService('${wsHost}prices?assets=$assetId');
 
     // Listen to WebSocket stream and update values
     webSocketService.stream.listen((message) {
