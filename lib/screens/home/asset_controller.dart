@@ -16,7 +16,7 @@ class AssetController extends GetxController {
   /// Accept the assetName and initial assetValue in the constructor
   AssetController(this.assetId, double initialValue) {
     // Set the initial value from the props
-    assetPrice.value = initialValue;
+    assetPrice.value = stringToDouble(initialValue.toStringAsFixed(6));
   }
 
   @override

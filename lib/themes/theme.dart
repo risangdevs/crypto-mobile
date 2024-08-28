@@ -30,6 +30,26 @@ final ThemeData lightTheme = ThemeData(
       landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
       selectedItemColor: deepPurple,
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      suffixIconColor: deepBlue,
+      filled: true,
+      fillColor: paleLavender,
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: const BorderSide(
+          color: deepBlue,
+        ),
+      ),
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      border: OutlineInputBorder(
+        borderSide: const BorderSide(),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 12.0,
+        vertical: 8.0,
+      ),
+    ),
     switchTheme: const SwitchThemeData(
       thumbColor: WidgetStatePropertyAll(paleLavender),
       trackColor: WidgetStatePropertyAll(softYellow),
@@ -63,6 +83,26 @@ final ThemeData darkTheme = ThemeData(
       landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
       selectedItemColor: softYellow,
       unselectedItemColor: paleLavender,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      suffixIconColor: babyBlue,
+      filled: true,
+      fillColor: deepCyan,
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: const BorderSide(
+          color: babyBlue,
+        ),
+      ),
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      border: OutlineInputBorder(
+        borderSide: const BorderSide(),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 12.0,
+        vertical: 8.0,
+      ),
     ),
     switchTheme: const SwitchThemeData(
       thumbColor: WidgetStatePropertyAll(paleLavender),
