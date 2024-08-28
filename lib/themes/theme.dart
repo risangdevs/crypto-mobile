@@ -36,8 +36,8 @@ final ThemeData lightTheme = ThemeData(
       fillColor: paleLavender,
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
-        borderSide: const BorderSide(
-          color: deepBlue,
+        borderSide: BorderSide(
+          color: deepBlue.withOpacity(0.2),
         ),
       ),
       floatingLabelBehavior: FloatingLabelBehavior.never,
