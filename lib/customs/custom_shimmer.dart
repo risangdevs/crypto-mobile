@@ -12,9 +12,11 @@ class CustomShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Shimmer.fromColors(
-      baseColor: deepCyan.withOpacity(0.1),
-      highlightColor: deepBlue.withOpacity(0.2),
+      baseColor: isDarkMode ? babyBlue.withOpacity(0.1) : deepCyan.withOpacity(0.1),
+      highlightColor: isDarkMode ? babyBlue.withOpacity(0.2) : deepBlue.withOpacity(0.2),
       child: child,
     );
   }

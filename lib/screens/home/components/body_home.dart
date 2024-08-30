@@ -36,7 +36,7 @@ class BodyHomeState extends State<BodyHome>
 
     // Initialize animation controller
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 300),
+      duration: duration500ms,
       vsync: this,
     );
 
@@ -119,6 +119,7 @@ class BodyHomeState extends State<BodyHome>
                   children: [
                     Expanded(
                       child: TextField(
+                        style: Theme.of(context).textTheme.bodyLarge,
                         controller: searchController,
                         focusNode: searchFocusNode, // Attach the focus node
                         onChanged: _filterAssets,
@@ -126,14 +127,9 @@ class BodyHomeState extends State<BodyHome>
                         decoration: const InputDecoration(
                           hintText: 'Search assets...',
                           border: InputBorder.none,
+                          suffixIcon: Icon(Icons.search),
                         ),
                       ),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.search),
-                      onPressed: () {
-                        _filterAssets(searchController.text);
-                      },
                     ),
                   ],
                 ),
@@ -177,30 +173,33 @@ class BodyHomeState extends State<BodyHome>
   Widget buildCompleted(BuildContext context) {
     return Obx(
       () {
-        return ListView.builder(
-          padding: isSearchVisible
-              ? const EdgeInsets.only(top: kDefaultPadding * 4)
-              : const EdgeInsets.only(
-                  top: kDefaultPadding), // To leave space for the search bar
-          itemCount: filteredData.length,
-          itemBuilder: (context, index) {
-            var item = filteredData[index];
-            return Column(
-              children: [
-                const CustomSizedBox(),
-                AssetListItem(
-                  imageUrl: logoUrl(item.symbol),
-                  assetId: item.id,
-                  symbol: item.symbol,
-                  assetName: item.name,
-                  assetValue: stringToDouble(item.priceUsd),
-                  assetPriceChange: stringToDouble(item.changePercent24Hr),
-                  assetMarketCap: stringToDouble(item.marketCapUsd),
-                ),
-                const CustomSizedBox(),
-              ],
-            );
-          },
+        return AnimatedPadding(
+          padding: EdgeInsets.only(
+            top: isSearchVisible ? kDefaultPadding * 4 : 0,
+          ),
+          duration: duration500ms, // Animation duration
+          curve: Curves.easeInOut, // Animation curve
+          child: ListView.builder(
+            itemCount: filteredData.length,
+            itemBuilder: (context, index) {
+              var item = filteredData[index];
+              return Column(
+                children: [
+                  CustomSizedBox(height: index == 0 && !isSearchVisible ? kDefaultPadding : kDefaultPadding * 0.2,),
+                  AssetListItem(
+                    imageUrl: logoUrl(item.symbol),
+                    assetId: item.id,
+                    symbol: item.symbol,
+                    assetName: item.name,
+                    assetValue: stringToDouble(item.priceUsd),
+                    assetPriceChange: stringToDouble(item.changePercent24Hr),
+                    assetMarketCap: stringToDouble(item.marketCapUsd),
+                  ),
+                  const CustomSizedBox(),
+                ],
+              );
+            },
+          ),
         );
       },
     );
@@ -215,7 +214,7 @@ class BodyHomeState extends State<BodyHome>
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
         child: Column(
-          children: shimmerHome,
+          children: shimmerHome(context),
         ),
       ),
     );

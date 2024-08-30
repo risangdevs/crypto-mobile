@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 final ThemeData lightTheme = ThemeData(
     fontFamily: "Inter",
     brightness: Brightness.light,
-    primaryColor: mintGreen,
+    primaryColor: paleLavender,
     scaffoldBackgroundColor: paleLavender,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: const TextTheme(
@@ -15,6 +15,7 @@ final ThemeData lightTheme = ThemeData(
       bodyLarge: TextStyle(color: deepPurple),
       bodyMedium: TextStyle(color: deepPurple),
       bodySmall: TextStyle(color: deepPurple),
+      titleMedium: darkBoldMediumTextStyle,
     ),
     appBarTheme: AppBarTheme(
       elevation: 6.0,
@@ -50,6 +51,25 @@ final ThemeData lightTheme = ThemeData(
         vertical: 8.0,
       ),
     ),
+    dialogTheme: DialogTheme(
+      titleTextStyle: darkBoldMediumTextStyle,
+      contentTextStyle: darkSmallTextStyle,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      backgroundColor: paleLavender,
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: darkTeal, // Text color
+        // backgroundColor: Colors.blue, // Background color
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8), // Button shape
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 24),
+        textStyle: darkBoldMediumTextStyle,
+      ),
+    ),
     switchTheme: const SwitchThemeData(
       thumbColor: WidgetStatePropertyAll(paleLavender),
       trackColor: WidgetStatePropertyAll(softYellow),
@@ -68,6 +88,7 @@ final ThemeData darkTheme = ThemeData(
       bodyLarge: TextStyle(color: softYellow),
       bodyMedium: TextStyle(color: softYellow),
       bodySmall: TextStyle(color: softYellow),
+      titleMedium: lightBoldMediumTextStyle,
     ),
     appBarTheme: const AppBarTheme(
       elevation: 0.01,
@@ -81,13 +102,13 @@ final ThemeData darkTheme = ThemeData(
       backgroundColor: deepOlive,
       elevation: 6.0,
       landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
-      selectedItemColor: softYellow,
+      selectedItemColor: babyBlue,
       unselectedItemColor: paleLavender,
     ),
     inputDecorationTheme: InputDecorationTheme(
       suffixIconColor: babyBlue,
       filled: true,
-      fillColor: deepCyan,
+      fillColor: deepBlue,
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: const BorderSide(
@@ -102,6 +123,24 @@ final ThemeData darkTheme = ThemeData(
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 12.0,
         vertical: 8.0,
+      ),
+    ),
+    dialogTheme: DialogTheme(
+      titleTextStyle: lightBoldMediumTextStyle,
+      contentTextStyle: lightSmallTextStyle,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      backgroundColor: deepBlue,
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: babyBlue, // Text color
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8), // Button shape
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 24),
+        textStyle: darkBoldMediumTextStyle,
       ),
     ),
     switchTheme: const SwitchThemeData(

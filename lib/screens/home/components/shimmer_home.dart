@@ -1,9 +1,11 @@
 import 'package:crypto_mobile/customs/custom_shimmer.dart';
 import 'package:flutter/material.dart';
 
-List<Widget> shimmerHome = buildShimmerList(20);
+List<Widget> shimmerHome(BuildContext context) {
+  return buildShimmerList(20, context);
+}
 
-List<Widget> buildShimmerList(int itemCount) {
+List<Widget> buildShimmerList(int itemCount, BuildContext context) {
   return List.generate(
     itemCount,
     (index) => Column(
@@ -14,7 +16,7 @@ List<Widget> buildShimmerList(int itemCount) {
             height: 80.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
-              color: Colors.white,
+              color: Theme.of(context).primaryColor,
             ),
           ),
         ),

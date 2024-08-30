@@ -59,7 +59,7 @@ class AssetListItem extends StatelessWidget {
               ),
               title: Text(
                 '$symbol $assetName',
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.titleMedium,
                 overflow: TextOverflow.ellipsis,
               ),
               subtitle: Text(

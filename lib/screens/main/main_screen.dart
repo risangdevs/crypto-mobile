@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:crypto_mobile/screens/home/components/exit_confirmation.dart';
 import 'package:crypto_mobile/screens/main/main_screen_controller.dart';
 import 'package:crypto_mobile/themes/theme_controller.dart';
 import 'package:flutter/material.dart';
@@ -19,28 +21,32 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
     );
     final ThemeController themeController = Get.find();
 
+    onPopInvoked(bool popDisp) async {
+      bool exitApp = await showExitConfirmation(context);
+      if (exitApp) {
+        exit(0); // Exit the app
+      }
+    }
+
+    onChanged(bool value) {
+      themeController.toggleTheme();
+    }
     return Obx(
       () => PopScope(
         // ignore: deprecated_member_use
-        onPopInvoked: (didPop)  {
-          
-        },
+        onPopInvoked: onPopInvoked,
         canPop: false,
         child: Scaffold(
           appBar: AppBar(
             title: Text(controller.getTitle()),
-            actions: controller.getTitle().toString() == controller.componentList[3].title
-                ? [
-                    Obx(() {
-                      return Switch(
-                        value: themeController.isDarkMode.value,
-                        onChanged: (value) {
-                          themeController.toggleTheme();
-                        },
-                      );
-                    }),
-                  ]
-                : null,
+            actions: [
+              Obx(() {
+                return Switch(
+                  value: themeController.isDarkMode.value,
+                  onChanged: onChanged,
+                );
+              }),
+            ],
           ),
           body: controller.getComponent(),
           bottomNavigationBar: BottomNavigationBar(
@@ -48,7 +54,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
             showSelectedLabels: true,
             showUnselectedLabels: false,
             onTap: controller.setCurrentIndex,
-            items:  [
+            items: [
               BottomNavigationBarItem(
                 icon: const Icon(Icons.home_outlined),
                 activeIcon: const Icon(Icons.home_filled),
