@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:crypto_mobile/constants/constants.dart';
+import 'package:crypto_mobile/models/asset_models.dart';
+import 'package:crypto_mobile/networks/api_provider.dart';
 import 'package:crypto_mobile/networks/network_constants.dart';
 import 'package:crypto_mobile/networks/websocket.dart';
 import 'package:crypto_mobile/utils/utils.dart';
@@ -14,10 +16,25 @@ class AssetController extends GetxController {
   late WebSocketService webSocketService;
   final String assetId;
 
+  var historicalStatus = Status.LOADING.obs;
+
+  var historicalData = <HistoricalData>[].obs;
+
   /// Accept the assetName and initial assetValue in the constructor
   AssetController(this.assetId, double initialValue) {
     // Set the initial value from the props
     assetPrice.value = stringToDouble(initialValue.toStringAsFixed(6));
+  }
+  Future<void> fetchHistorical() async {
+    historicalStatus(Status.LOADING);
+    try {
+      var response = await AssetListItemServices().get(assetId, {'interval':'1d'});
+      historicalData(response.data);
+      historicalStatus(Status.COMPLETED);
+    } catch (error) {
+      print(error);
+      historicalStatus(Status.ERROR);
+    }
   }
 
   @override
@@ -65,5 +82,18 @@ class AssetController extends GetxController {
   void onClose() {
     webSocketService.close();
     super.onClose();
+  }
+}
+
+class AssetListItemServices {
+  final ApiProvider apiProvider = ApiProvider();
+
+  Future<HistoricalDataList> get(assetId, queryParameters) async {
+    var queryParameters = <String, dynamic>{};
+    final response = await apiProvider.dio.get(
+      Path.assetHistorical(assetId),
+      queryParameters: {'interval' : 'h1'},
+    );
+    return HistoricalDataList.fromJson(response.data);
   }
 }

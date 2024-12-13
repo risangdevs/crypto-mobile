@@ -44,6 +44,7 @@ class AppInterceptors extends Interceptor {
   ) async {
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     print("[Response]: ${json.encode(response.statusMessage)}");
+    // print("[Response]: ${json.encode(response.data)}");
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
     return handler.next(response);

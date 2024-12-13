@@ -110,3 +110,63 @@ class AssetListData {
     };
   }
 }
+
+class HistoricalDataList {
+  final List<HistoricalData> data;
+  final int timestamp;
+
+  HistoricalDataList({
+    required this.data,
+    required this.timestamp,
+  });
+
+  factory HistoricalDataList.fromJson(Map<String, dynamic> json) {
+    return HistoricalDataList(
+      data:
+          List<HistoricalData>.from(json['data'].map((asset) => HistoricalData.fromJson(asset))),
+      timestamp: json['timestamp'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'data': data.map((asset) => asset.toJson()).toList(),
+      'timestamp': timestamp,
+    };
+  }
+}
+
+
+class HistoricalData {
+  final String priceUsd;
+  final int time;
+  final String circulatingSupply;
+  final DateTime date;
+
+  HistoricalData({
+    required this.priceUsd,
+    required this.time,
+    required this.circulatingSupply,
+    required this.date,
+  });
+
+  // Factory constructor to create an instance from JSON
+  factory HistoricalData.fromJson(Map<String, dynamic> json) {
+    return HistoricalData(
+      priceUsd: json['priceUsd'],
+      time: json['time'],
+      circulatingSupply: json['circulatingSupply'],
+      date: DateTime.parse(json['date']),
+    );
+  }
+
+  // Method to convert instance back to JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'priceUsd': priceUsd,
+      'time': time,
+      'circulatingSupply': circulatingSupply,
+      'date': date.toIso8601String(),
+    };
+  }
+}

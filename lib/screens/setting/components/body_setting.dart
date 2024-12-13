@@ -1,3 +1,5 @@
+import 'package:crypto_mobile/components/buttons/flat_button.dart';
+import 'package:crypto_mobile/components/buttons/raised_button.dart';
 import 'package:flutter/material.dart';
 
 
@@ -23,6 +25,10 @@ class BodySetting extends StatelessWidget {
               '1',
               style: Theme.of(context).textTheme.bodySmall,
             ),
+            FlatButton(label: 'Flat Button', onPressed: ()=>{print('flat button pressed')}),
+            RaisedButton(label: 'Raised Button', onPressed: ()=>{print('raised button pressed')}),
+            OutlinedButton(child: Text('Outlined Button'), onPressed: ()=>{print('outlined button pressed')}),
+            
           ],
         ),
       ),
