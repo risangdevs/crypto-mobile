@@ -28,7 +28,7 @@ class AssetController extends GetxController {
   Future<void> fetchHistorical() async {
     historicalStatus(Status.LOADING);
     try {
-      var response = await AssetListItemServices().get(assetId, {'interval':'1d'});
+      var response = await AssetListItemServices().get(assetId, {'interval':'d1'});
       historicalData(response.data);
       historicalStatus(Status.COMPLETED);
     } catch (error) {
@@ -88,11 +88,15 @@ class AssetController extends GetxController {
 class AssetListItemServices {
   final ApiProvider apiProvider = ApiProvider();
 
-  Future<HistoricalDataList> get(assetId, queryParameters) async {
-    var queryParameters = <String, dynamic>{};
+  Future<HistoricalDataList> get(String assetId, Map<String, dynamic> queryParameters) async {
+    queryParameters = queryParameters;
+
+    // Set a default 'interval' if it's not provided
+    queryParameters.putIfAbsent('interval', () => 'h1');
+
     final response = await apiProvider.dio.get(
       Path.assetHistorical(assetId),
-      queryParameters: {'interval' : 'h1'},
+      queryParameters: queryParameters,
     );
     return HistoricalDataList.fromJson(response.data);
   }

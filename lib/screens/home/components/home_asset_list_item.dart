@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crypto_mobile/constants/constants.dart';
 import 'package:crypto_mobile/customs/custom_shimmer.dart';
 import 'package:crypto_mobile/screens/home/asset_controller.dart';
-import 'package:crypto_mobile/screens/home/components/price_chart.dart';
 import 'package:crypto_mobile/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -87,7 +86,7 @@ class AssetListItem extends StatelessWidget {
                 //     padding: const EdgeInsets.all(8.0),
                 //     child: PriceChart(priceData: assetController.historicalData.value),
                 //   ),
-                ],
+              ],
             ),
           ));
     });

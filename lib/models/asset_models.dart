@@ -140,13 +140,13 @@ class HistoricalDataList {
 class HistoricalData {
   final String priceUsd;
   final int time;
-  final String circulatingSupply;
+  // final String circulatingSupply;
   final DateTime date;
 
   HistoricalData({
     required this.priceUsd,
     required this.time,
-    required this.circulatingSupply,
+    // required this.circulatingSupply,
     required this.date,
   });
 
@@ -155,7 +155,7 @@ class HistoricalData {
     return HistoricalData(
       priceUsd: json['priceUsd'],
       time: json['time'],
-      circulatingSupply: json['circulatingSupply'],
+      // circulatingSupply: json['circulatingSupply'],
       date: DateTime.parse(json['date']),
     );
   }
@@ -165,7 +165,7 @@ class HistoricalData {
     return {
       'priceUsd': priceUsd,
       'time': time,
-      'circulatingSupply': circulatingSupply,
+      // 'circulatingSupply': circulatingSupply,
       'date': date.toIso8601String(),
     };
   }
